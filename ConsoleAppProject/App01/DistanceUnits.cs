@@ -5,10 +5,12 @@
     /// </summary>
     public enum DistanceUnits
     {
-        NoUnit,
-        Feet,
-        Metres,
-        Kilometres,
-        Miles
+        metre,
+        kilometre,
+        miles,
+        feet,
+        centimetre,
+        millimetre,
+        nanometre,
     }
 }

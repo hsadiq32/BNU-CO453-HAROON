@@ -1,5 +1,4 @@
 ﻿using System;
-using ConsoleAppProject.App01;
 
 namespace ConsoleAppProject
 {
@@ -15,14 +14,38 @@ namespace ConsoleAppProject
     {
         public static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            
-            Console.WriteLine("BNU CO453 Applications Programming 2020-2021!");
-            Console.WriteLine();
-            Console.Beep();
+            while (true)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                InputReader reader = new InputReader();
+                SyntaxGenerator syntaxGen = new SyntaxGenerator();
+                syntaxGen.HeaderGen("BNU CO453 Applications Programming 2020-2021!");
+                Console.WriteLine(syntaxGen.SyntaxFiller1("1. App01 - Distance Converter"));
+                Console.WriteLine(syntaxGen.SyntaxFiller1("2. App02 - BMI Calculator"));
+                Console.WriteLine(syntaxGen.SyntaxFiller1("3. Quit"));
+                syntaxGen.SyntaxFiller2();
+                Console.Beep();
 
-            DistanceConverter converter = new DistanceConverter();
-            converter.Run();
+                int option = reader.OptionInputChecker("Enter Option:", 3);
+                if (option == 1)
+                {
+                    DistanceConverter converter = new DistanceConverter();
+                    converter.Run();
+                }
+                else if (option == 2)
+                {
+                    BMI bmi = new BMI();
+                    bmi.Run();
+                }
+                else if(option == 3)
+                {
+                    Console.WriteLine(syntaxGen.SyntaxFiller1(""));
+                    Console.WriteLine(syntaxGen.SyntaxFiller1("Goodbye"));
+                    Console.WriteLine(syntaxGen.SyntaxFiller1(""));
+                    syntaxGen.SyntaxFiller2();
+                    break;
+                }
+            }
         }
     }
 }

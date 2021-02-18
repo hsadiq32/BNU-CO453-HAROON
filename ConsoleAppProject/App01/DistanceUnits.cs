@@ -1,4 +1,4 @@
-﻿namespace ConsoleAppProject.App01
+﻿namespace ConsoleAppProject
 {
     /// <summary>
     /// List of units used to measure distance
@@ -6,6 +6,7 @@
     public enum DistanceUnits
     {
         metre,
+        lightyear,
         kilometre,
         miles,
         feet,

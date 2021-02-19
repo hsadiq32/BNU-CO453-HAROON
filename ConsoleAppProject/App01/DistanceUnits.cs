@@ -5,13 +5,16 @@
     /// </summary>
     public enum DistanceUnits
     {
-        metre,
-        lightyear,
-        kilometre,
+        metres,
+        lightyears,
+        kilometres,
         miles,
+        yards,
         feet,
-        centimetre,
-        millimetre,
-        nanometre,
+        inches,
+        centimetres,
+        millimetres,
+        micrometres,
+        nanometres,
     }
 }

@@ -6,7 +6,7 @@ namespace ConsoleAppProject
     /// Please describe the main features of this App
     /// </summary>
     /// <author>
-    /// Student Name version 0.1
+    /// Haroon Sadiq
     /// </author>
     public class BMI
     {

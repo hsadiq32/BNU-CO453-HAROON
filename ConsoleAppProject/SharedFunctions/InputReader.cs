@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 namespace ConsoleAppProject
 {
     /// <summary>
@@ -78,25 +77,5 @@ namespace ConsoleAppProject
             }
             return data;
         }
-
-        public string UnitInputChecker(string consoleWrite)
-        {
-            string data = "";
-            while (true)
-            {
-                Console.Write(syntaxGen.SyntaxFiller1(consoleWrite));
-                data = Console.ReadLine().ToLower();
-                if (System.Enum.IsDefined(typeof(DistanceUnits), data))
-                {
-                    break;
-                }
-                else
-                {
-                    Console.Write(syntaxGen.SyntaxFiller1("Invalid unit\n"));
-                }
-            }
-            return data;
-        }
-
     }
 }

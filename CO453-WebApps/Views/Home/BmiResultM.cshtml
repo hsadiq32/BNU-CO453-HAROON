@@ -1,0 +1,10 @@
+﻿@model ConsoleAppProject.App02.BMI;
+@{
+    ViewData["Title"] = "BmiResultM";
+}
+
+<div class="col-sm-12 col-md-6 text-center" style="background-color: @ViewBag.BMIColour">
+    <h3>Your Result: @ViewBag.BMIResult</h3>
+    @ViewBag.BMIMessage
+    <h4>This is @ViewBag.BMIDescription</h4>    
+    </div>

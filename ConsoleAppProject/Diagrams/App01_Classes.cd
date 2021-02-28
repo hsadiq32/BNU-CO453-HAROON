@@ -1,2 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ConsoleAppProject.DistanceConverter">
+    <Position X="4.75" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAASAAAAAEAAAIAAAAAADQACAAABAAAAAAUQAI=</HashCode>
+      <FileName>App01\DistanceConverter.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SyntaxGenerator" />
+      <Property Name="InputReader" />
+      <Property Name="DistanceUnits" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ConsoleAppProject.InputReader">
+    <Position X="8" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAEAAAAAAAAAAAAAAAAAAAAAAAAABAABAAAAAAAAABA=</HashCode>
+      <FileName>SharedFunctions\InputReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleAppProject.SyntaxGenerator">
+    <Position X="4.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAABAAAQ=</HashCode>
+      <FileName>SharedFunctions\SyntaxGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="ConsoleAppProject.DistanceUnits">
+    <Position X="8" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQkAAAAAAAAAAAAAAAACQABAAAAEAAAAEAIAAAGAAA=</HashCode>
+      <FileName>App01\DistanceUnits.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

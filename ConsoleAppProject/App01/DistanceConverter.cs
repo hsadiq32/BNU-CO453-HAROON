@@ -1,7 +1,8 @@
 ﻿
 using System;
 using System.Collections.Generic;
-namespace ConsoleAppProject
+
+namespace ConsoleAppProject.App01
 {
     /// <summary>
     /// Please describe the main features of this App
@@ -12,13 +13,51 @@ namespace ConsoleAppProject
     public class DistanceConverter
     {
         // Create a new dictionary of strings, with string keys.
-        Dictionary<string, double> unitConversion = new Dictionary<string, double>();
+        public Dictionary<string, string> unitConversion = new Dictionary<string, string>();
+        public Dictionary<double, double> methodReverse = new Dictionary<double, double>();
         InputReader reader = new InputReader();
         SyntaxGenerator syntaxGen = new SyntaxGenerator();
+
+        public DistanceUnits DistanceUnits
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public string Unit1 { get; set; }
+        public string Unit2 { get; set; }
+        public double Unit1Value { get; set; }
+
+        public string[] Splitter { get; set; }
+
+        public double Result { get; set; }
+        public string UnitData { get; set; }
+        public double ConversionValue { get; set; }
+        public double Method { get; set; }
+        public bool WebVersion { get; set; }
         public void Run()
         {
             syntaxGen.SubheaderGen("Distance Converter");
             UserInput();
+        }
+
+        public void UnitConversionData()
+        {
+            unitConversion.Add("metres", "m,1");
+            unitConversion.Add("lightyears", "m,9.461E+15");
+            unitConversion.Add("kilometres", "m,1000");
+            unitConversion.Add("miles", "m,1609.344");
+            unitConversion.Add("yards", "d,1.094");
+            unitConversion.Add("feet", "d,3.281");
+            unitConversion.Add("inches", "d,39.37");
+            unitConversion.Add("centimetres", "d,100");
+            unitConversion.Add("millimetres", "d,1000");
+            unitConversion.Add("micrometres", "d,1E+6");
+            unitConversion.Add("nanometres", "d,1E+9");
+            methodReverse.Add(0, 1);
+            methodReverse.Add(1, 0);
         }
 
         public string DistanceChecker(string consoleWrite)
@@ -40,34 +79,84 @@ namespace ConsoleAppProject
             return data;
         }
 
-        public void UnitConversionData()
-        {
-            unitConversion.Add("metres", 1);
-            unitConversion.Add("lightyears", 9.461E+15);
-            unitConversion.Add("kilometres", 1000);
-            unitConversion.Add("miles", 1609.344);
-            unitConversion.Add("yards", 0.91407678245);
-            unitConversion.Add("feet", 0.3048);
-            unitConversion.Add("inches", 0.0254000508);
-            unitConversion.Add("centimetres", 0.01);
-            unitConversion.Add("millimetres", 0.001);
-            unitConversion.Add("micrometres", 0.000001);
-            unitConversion.Add("nanometres", 0.000000001);
-        }
-
         /// <summary>
         /// Prompt the user to enter the distance in miles
         /// Input the miles as a double number.
         /// </summary>
         public void UserInput()
         {
-            string unit1 = DistanceChecker("Convert:");
-            string unit2 = DistanceChecker("To:");
-            double unit1value = reader.DoubleInputChecker("Please enter the number of " + unit1 + " > ");
-            UnitConversionData();
-            double answer = (unit1value * unitConversion[unit1]) / unitConversion[unit2];
-            Console.WriteLine(syntaxGen.SyntaxFiller1(unit1value + " " + unit1 + " ---> " + answer.ToString() + " " + unit2));
+            Unit1 = DistanceChecker("Convert:");
+            Unit2 = DistanceChecker("To:");
+            Unit1Value = reader.DoubleInputChecker("Please enter the number of " + Unit1 + " > ");
+            double res = ConverterResult(false);
+            Console.WriteLine(syntaxGen.SyntaxFiller1(Unit1Value + " " + Unit1 + " ---> " + res + " " + Unit2));
             syntaxGen.SyntaxFiller2();
+        }
+
+        public double ConverterResult(bool version)
+        {
+            WebVersion = version;
+            UnitConversionData();
+            return Converter(Unit2, Converter(Unit1, Unit1Value, false), true);
+        }
+
+        public double Converter(string unitName, double unitValue, bool reverse)
+        {
+            Result = 0;
+            int e = 0;
+            if(WebVersion)
+            {
+                if(Int32.TryParse(unitName, out e))
+                {
+                    unitName = Enum.GetName(typeof(DistanceUnits), Int32.Parse(unitName));
+                }
+                else
+                {
+                    unitName = "metres";
+                }
+            }
+            
+            if (unitName != null)
+            {
+                UnitData = unitConversion[unitName];
+            }
+            else
+            {
+                UnitData = unitConversion["metres"];
+            }
+            ConversionValue = UnitConversionParser(UnitData, 1);
+            Method = UnitConversionParser(UnitData, 0);
+            if (reverse) { Method = methodReverse[Method]; }
+
+            if (Method == 0)
+            {
+                Result = unitValue * ConversionValue;
+
+            }
+            else if (Method == 1)
+            {
+                Result = unitValue / ConversionValue;
+            }
+            return Result;
+        }
+        public double UnitConversionParser(string data, int dataType)
+        {
+            Splitter = data.Split(",");
+
+            if (dataType == 0)
+            {
+                if (Splitter[0] == "m") { return 0; }
+                else if (Splitter[0] == "d") { return 1; }
+                else { return 3; }
+            }
+            else if (dataType == 1)
+            {
+                return Convert.ToDouble(Splitter[1]);
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }

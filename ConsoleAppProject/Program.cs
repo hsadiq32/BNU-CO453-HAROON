@@ -1,4 +1,6 @@
 ﻿using System;
+using ConsoleAppProject.App01;
+using ConsoleAppProject.App02;
 
 namespace ConsoleAppProject
 {

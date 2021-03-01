@@ -37,6 +37,31 @@ namespace ConsoleAppProject.App01
         public double ConversionValue { get; set; }
         public double Method { get; set; }
         public bool WebVersion { get; set; }
+
+        public InputReader InputReader
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public SyntaxGenerator SyntaxGenerator
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public DistanceUnits DistanceUnit
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public void Run()
         {
             syntaxGen.SubheaderGen("Distance Converter");

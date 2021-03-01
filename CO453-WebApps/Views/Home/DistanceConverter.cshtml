@@ -1,44 +1,40 @@
 ﻿@model ConsoleAppProject.App01.DistanceConverter
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
 @using ConsoleAppProject.App01
 
 @{ ViewData["Title"] = "DistanceConverter"; }
 
-<div class="jumbotron jumbotron-fluid" id="chef-jumbotron">
-
-    <div id="jumbotron-main-text" class="text-center">
-        <h1>Distance Converter Application</h1>
-        <p>Check the conversion between two distance units!</p>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col">
-        <h1>Convert Distance</h1>
-        <form method="post">
-            <div class="form-group">
-                <label for="amount">Select the amount!</label>
-                <input type="number" class="form-control" asp-for="Unit1Value" placeholder="Your amount.." required />
+<div class="jumbotron">
+    <h3 class="display-4 text-center">Distance Converter</h3>
+    <hr class="my-4 text-center">
+    <div class="container">
+        <div class="row" style="margin:15px">
+            <div class="col-sm-6" >
+                <form method="post">
+                    <div class="form-group">
+                        <label for="amount">Amount:</label>
+                        <input type="number" class="form-control" asp-for="Unit1Value" placeholder="Your amount.." required />
+                    </div>
+                    <div class="form-group">
+                        <label for="converted">Convert:</label>
+                        <select class="form-control" asp-for="Unit1" asp-items="Html.GetEnumSelectList<DistanceUnits>()" required>
+                            <option value="">none</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="toConvert">To:</label>
+                        <select class="form-control" asp-for="Unit2" asp-items="Html.GetEnumSelectList<DistanceUnits>()" required>
+                            <option value="">none</option>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary btn-lg" style="margin-bottom:15px">Convert</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="converted">Select the unit value you want to convert!</label>
-                <select class="form-control" asp-for="Unit1" asp-items="Html.GetEnumSelectList<DistanceUnits>()" required>
-                    <option value="">---none---</option>
-                </select>
+            <div class="col-sm-6" style="background-color:rgba(0,0,0,0.2); border-radius:5px;min-height:275px">
+                <h2 class="text-center" style="margin-top:10px;margin-bottom:95px">Result</h2>
+                <h2 class="text-center">@Model.ConverterResult(true)</h2>
             </div>
-            <div class="form-group">
-                <label for="toConvert">Select the unit value you want to convert to!</label>
-                <select class="form-control" asp-for="Unit2" asp-items="Html.GetEnumSelectList<DistanceUnits>()" required>
-                    <option value="">---none---</option>
-                </select>
-            </div>
-            <button type="submit" class="btn" style="background-color:forestgreen;">Convert Distance</button>
-        </form>
-    </div>
-    <h1>Result</h1>
-    <div>
-        <h2 class="rounded-circle">@Model.ConverterResult(true)</h2>
+        </div>
     </div>
 </div>

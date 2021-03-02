@@ -38,22 +38,6 @@ namespace ConsoleAppProject.App01
         public double Method { get; set; }
         public bool WebVersion { get; set; }
 
-        public InputReader InputReader
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public SyntaxGenerator SyntaxGenerator
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
         public DistanceUnits DistanceUnit
         {
             get => default;
@@ -110,6 +94,7 @@ namespace ConsoleAppProject.App01
         /// </summary>
         public void UserInput()
         {
+            PrintUnits();
             Unit1 = DistanceChecker("Convert:");
             Unit2 = DistanceChecker("To:");
             Unit1Value = reader.DoubleInputChecker("Please enter the number of " + Unit1 + " > ");
@@ -117,12 +102,19 @@ namespace ConsoleAppProject.App01
             Console.WriteLine(syntaxGen.SyntaxFiller1(Unit1Value + " " + Unit1 + " ---> " + res + " " + Unit2));
             syntaxGen.SyntaxFiller2();
         }
-
         public double ConverterResult(bool version)
         {
             WebVersion = version;
             UnitConversionData();
             return Converter(Unit2, Converter(Unit1, Unit1Value, false), true);
+        }
+        public void PrintUnits()
+        {
+            Console.WriteLine(syntaxGen.SyntaxFiller1("Available Units:"));
+            foreach (string i in Enum.GetNames(typeof(DistanceUnits)))
+            {
+                Console.WriteLine(syntaxGen.SyntaxFiller1($" {i}"));
+            }
         }
 
         public double Converter(string unitName, double unitValue, bool reverse)

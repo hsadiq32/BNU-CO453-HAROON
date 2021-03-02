@@ -1,33 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="ConsoleAppProject.InputReader">
-    <Position X="8" Y="6.75" Width="1.5" />
+    <Position X="8" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CAEAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAABA=</HashCode>
       <FileName>SharedFunctions\InputReader.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ConsoleAppProject.SyntaxGenerator">
-    <Position X="5.75" Y="6.75" Width="1.5" />
+    <Position X="5.75" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAABAAAQ=</HashCode>
       <FileName>SharedFunctions\SyntaxGenerator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="ConsoleAppProject.App01.DistanceConverter">
-    <Position X="5.75" Y="0.75" Width="1.75" />
+    <Position X="6" Y="1.75" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>CEAAAAAASAAAAAEAgAYgAAwAALQASAAAQAAAAEQQQAI=</HashCode>
+      <HashCode>CEAAAAABQAAAAAEAgAYgAAwAALQAQAAAQAAAAEQQQAI=</HashCode>
       <FileName>App01\DistanceConverter.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="InputReader" />
-      <Property Name="SyntaxGenerator" />
       <Property Name="DistanceUnit" />
     </ShowAsAssociation>
   </Class>
   <Enum Name="ConsoleAppProject.App01.DistanceUnits">
-    <Position X="8.5" Y="1.75" Width="1.5" />
+    <Position X="8.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQkAAAAAAAAAAAAAAAACQABAAAAEAAAAEAIAAAGAAA=</HashCode>
       <FileName>App01\DistanceUnits.cs</FileName>

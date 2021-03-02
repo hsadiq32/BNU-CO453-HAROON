@@ -31,13 +31,11 @@ namespace ConsoleAppProject
                 int option = reader.OptionInputChecker("Enter Option:", 3);
                 if (option == 1)
                 {
-                    DistanceConverter converter = new DistanceConverter();
-                    converter.Run();
+                    App01();
                 }
                 else if (option == 2)
                 {
-                    BMI bmi = new BMI();
-                    bmi.Run();
+                    App02();
                 }
                 else if(option == 3)
                 {
@@ -48,6 +46,16 @@ namespace ConsoleAppProject
                     break;
                 }
             }
+        }
+        public static void App01()
+        {
+            DistanceConverter converter = new DistanceConverter();
+            converter.Run();
+        }
+        public static void App02()
+        {
+            BMI bmi = new BMI();
+            bmi.Run();
         }
     }
 }

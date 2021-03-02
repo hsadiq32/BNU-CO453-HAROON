@@ -14,6 +14,22 @@ namespace ConsoleAppProject
     /// </summary>
     public static class Program
     {
+        public static DistanceConverter DistanceConverter
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public static BMI BMI
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public static void Main(string[] args)
         {
             while (true)

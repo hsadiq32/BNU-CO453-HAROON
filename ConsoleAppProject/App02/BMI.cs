@@ -24,22 +24,6 @@ namespace ConsoleAppProject.App02
         public string Description { get; set; }
         public double BmiRange { get; set; }
 
-        public InputReader InputReader
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public SyntaxGenerator SyntaxGenerator
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
         public BMIenum BMIenum
         {
             get => default;
@@ -87,7 +71,7 @@ namespace ConsoleAppProject.App02
                 Height = (Feet * 12) + Inches;
                 Weight *= 703;
             }
-            Bmi = Weight / (Height*Height);
+            Bmi = Weight / (Height * Height);
             return Bmi.ToString("0.#");
         }
         public string BMIdescription(int selectData)

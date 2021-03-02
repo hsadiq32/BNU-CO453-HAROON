@@ -17,13 +17,21 @@
   <Class Name="ConsoleAppProject.App02.BMI">
     <Position X="5.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAIAAAAADgAgAAAAAIAAAAAACiABGAACAAUUABAAAAI=</HashCode>
+      <HashCode>CAIAAAAABgAgAAAAAIAAAAAACiABEAACAAUUABAAAAI=</HashCode>
       <FileName>App02\BMI.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="InputReader" />
-      <Property Name="SyntaxGenerator" />
       <Property Name="BMIenum" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ConsoleAppProject.Program">
+    <Position X="3.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAIAAAAAAAAAAAAAAAAAABQAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="BMI" />
     </ShowAsAssociation>
   </Class>
   <Enum Name="ConsoleAppProject.App02.BMIenum">

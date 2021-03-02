@@ -17,9 +17,14 @@
   <Class Name="ConsoleAppProject.App02.BMI">
     <Position X="5.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CAIAAAAABgAgAAAAAIAAAAAAAiABEAACAAUUABAAAAI=</HashCode>
+      <HashCode>CAIAAAAADgAgAAAAAIAAAAAACiABGAACAAUUABAAAAI=</HashCode>
       <FileName>App02\BMI.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="InputReader" />
+      <Property Name="SyntaxGenerator" />
+      <Property Name="BMIenum" />
+    </ShowAsAssociation>
   </Class>
   <Enum Name="ConsoleAppProject.App02.BMIenum">
     <Position X="8.25" Y="2" Width="1.5" />

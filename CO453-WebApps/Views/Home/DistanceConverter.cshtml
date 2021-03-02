@@ -2,17 +2,19 @@
 @using ConsoleAppProject.App01
 
 @{ ViewData["Title"] = "DistanceConverter"; }
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="~/js/inputdecimal10.js"></script>
 <div class="jumbotron">
     <h3 class="display-4 text-center">Distance Converter</h3>
     <hr class="my-4 text-center">
     <div class="container">
         <div class="row" style="margin:15px">
-            <div class="col-sm-6" >
+            <div class="col-sm-6">
+                <h3 class="text-center font-weight-light" style="margin-top:10px;margin-bottom:10px">Distance</h3>
                 <form method="post">
                     <div class="form-group">
                         <label for="amount">Amount:</label>
-                        <input type="number" class="form-control" asp-for="Unit1Value" placeholder="Your amount.." required />
+                        <input type="number" class="form-control floatNumberField" value="0" step="0.01" asp-for="Unit1Value" required />
                     </div>
                     <div class="form-group">
                         <label for="converted">Convert:</label>
@@ -31,9 +33,10 @@
                     </div>
                 </form>
             </div>
-            <div class="col-sm-6" style="background-color:rgba(255,255,255,0.2); border-radius:5px;min-height:275px">
-                <h2 class="text-center" style="margin-top:10px;margin-bottom:95px">Result</h2>
-                <h2 class="text-center">@Model.ConverterResult(true)</h2>
+            <div class="col-sm-6" style="background-color:rgba(255,255,255,0.8); border-radius:5px;min-height:275px">
+                <h3 class="text-center font-weight-light" style="margin-top:10px;">Result</h3>
+
+                <textarea class="text-center font-weight-bolder h3" placeholder="Enter values on the left to see results" style="width:100%;min-height:300px;outline:none;border:none;margin-bottom:10px;border-radius:5px;padding:15px;color:#3d3d3d">@Model.ConverterResult(true)</textarea>
             </div>
         </div>
     </div>

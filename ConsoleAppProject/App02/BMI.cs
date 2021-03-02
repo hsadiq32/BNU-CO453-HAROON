@@ -23,6 +23,31 @@ namespace ConsoleAppProject.App02
         public double Bmi { get; set; }
         public string Description { get; set; }
         public double BmiRange { get; set; }
+
+        public InputReader InputReader
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public SyntaxGenerator SyntaxGenerator
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public BMIenum BMIenum
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public void Run()
         {
             InputReader reader = new InputReader();

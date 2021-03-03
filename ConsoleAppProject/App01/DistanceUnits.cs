@@ -3,7 +3,7 @@
 namespace ConsoleAppProject.App01
 {
     /// <summary>
-    /// List of units used to measure distance
+    /// List of units used to measure distance with display names for easy access
     /// </summary>
     public enum DistanceUnits
     {

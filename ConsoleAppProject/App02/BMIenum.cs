@@ -3,7 +3,7 @@
 namespace ConsoleAppProject.App02
 {
     /// <summary>
-    /// List of units used to measure distance
+    /// List of units used to classify BMI group with display names for easy access
     /// </summary>
     public enum BMIenum
     {

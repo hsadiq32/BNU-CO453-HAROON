@@ -3,7 +3,7 @@ using System;
 namespace ConsoleAppProject.App02
 {
     /// <summary>
-    /// Please describe the main features of this App
+    /// This App calulates BMI based on height and weight, allowing both metric and imperical values.
     /// </summary>
     /// <author>
     /// Haroon Sadiq
@@ -12,16 +12,26 @@ namespace ConsoleAppProject.App02
     {
         SyntaxGenerator syntaxGen = new SyntaxGenerator();
         ArrayList data = new ArrayList();
-        public string bameMessage1 = "If you are Black, Asian or other minority ethnic groups you have a higher risk";
-        public string bameMessage2 = "Adults 23.0 or more are at increased risk Adults 27.5 or more are at high risk";
+        // BAME Messages for results output
+        public static string bameMessage1 = "If you are Black, Asian or other minority ethnic groups you have a higher risk";
+        public static string bameMessage2 = "Adults 23.0 or more are at increased risk Adults 27.5 or more are at high risk";
+        // For this program I added colour variables for the online version of the App
         public string Colour { get; set; }
+        // Used to determine if data is imperical or metric
         public bool UnitVal { get; set; }
+        // Used for metres
         public double Height { get; set; }
+        // Used for Pounds and KG
         public double Weight { get; set; }
+        // Used for Feet
         public int Feet { get; set; }
+        // Used for Inches
         public double Inches { get; set; }
+        // Used to store the final result of the BMI score
         public double Bmi { get; set; }
+        // Used to store the description linking to the final result of the BMI score
         public string Description { get; set; }
+        // Used to distinguish BMI categories
         public double BmiRange { get; set; }
 
         public BMIenum BMIenum
@@ -31,7 +41,7 @@ namespace ConsoleAppProject.App02
             {
             }
         }
-
+        // Used for console use to work out BMI
         public void Run()
         {
             InputReader reader = new InputReader();
@@ -63,6 +73,7 @@ namespace ConsoleAppProject.App02
             BMIOutput(UnitVal);
 
         }
+        // Calculates BMI in an efficient fashion
         public string BMIcalc(bool imperical)
         {
             BMIdata();
@@ -74,6 +85,7 @@ namespace ConsoleAppProject.App02
             Bmi = Weight / (Height * Height);
             return Bmi.ToString("0.#");
         }
+        // Fetches the description or colour linking to the BMI score using the data stored in the dictionary
         public string BMIdescription(int selectData)
         {
             foreach (string arrayData in data)
@@ -99,6 +111,7 @@ namespace ConsoleAppProject.App02
                 return Colour;
             }
         }
+        // Stores necessary data in a dictionary
         public void BMIdata()
         {
             data.Remove(data);
@@ -110,6 +123,7 @@ namespace ConsoleAppProject.App02
             data.Add("40,Obese Class III,#b52f2f");
 
         }
+        // Outputs results into the console
         public void BMIOutput(bool imperical)
         {
             Console.WriteLine(syntaxGen.SyntaxFiller1("Your BMI is: " + BMIcalc(imperical) + " this is " + BMIdescription(0)));

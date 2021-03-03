@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace ConsoleAppProject.App01
 {
     /// <summary>
-    /// Please describe the main features of this App
+    /// This App converts converts one distance to another with a range of values
     /// </summary>
     /// <author>
     /// Haroon Sadiq
@@ -25,17 +25,23 @@ namespace ConsoleAppProject.App01
             {
             }
         }
-
+        // Starting value name
         public string Unit1 { get; set; }
+        // Target value name
         public string Unit2 { get; set; }
+        // Starting value
         public double Unit1Value { get; set; }
-
+        // Used to split statements
         public string[] Splitter { get; set; }
-
+        // The result
         public double Result { get; set; }
+        // Sends conversion data
         public string UnitData { get; set; }
+        // Used to store the middle-stage converison
         public double ConversionValue { get; set; }
+        // Distinguishes if the program needs to divide or multiply
         public double Method { get; set; }
+        // Program reacts different depending on the enviroment
         public bool WebVersion { get; set; }
 
         public DistanceUnits DistanceUnit
@@ -68,7 +74,7 @@ namespace ConsoleAppProject.App01
             methodReverse.Add(0, 1);
             methodReverse.Add(1, 0);
         }
-
+        // This is an input checker designed to check the distance values using the enum class
         public string DistanceChecker(string consoleWrite)
         {
             string data = "";
@@ -87,11 +93,7 @@ namespace ConsoleAppProject.App01
             }
             return data;
         }
-
-        /// <summary>
-        /// Prompt the user to enter the distance in miles
-        /// Input the miles as a double number.
-        /// </summary>
+        /// Prompt the user to enter 2 distance units in console format and the initial value
         public void UserInput()
         {
             PrintUnits();
@@ -102,6 +104,7 @@ namespace ConsoleAppProject.App01
             Console.WriteLine(syntaxGen.SyntaxFiller1(Unit1Value + " " + Unit1 + " ---> " + res + " " + Unit2));
             syntaxGen.SyntaxFiller2();
         }
+        // This method joins all calculations to produce a result
         public double ConverterResult(bool version)
         {
             WebVersion = version;
@@ -120,6 +123,7 @@ namespace ConsoleAppProject.App01
                 return Converter(Unit2, Converter(Unit1, Unit1Value, false), true);
             }
         }
+        // Prints Units for the console using the enum class in a for loop scanning for all display names
         public void PrintUnits()
         {
             Console.WriteLine(syntaxGen.SyntaxFiller1("Available Units:"));
@@ -128,7 +132,7 @@ namespace ConsoleAppProject.App01
                 Console.WriteLine(syntaxGen.SyntaxFiller1($" {i}"));
             }
         }
-
+        // The converter converts values to and from metres to allow mix-matching conversions, this is a 2 stage process
         public double Converter(string unitName, double unitValue, bool reverse)
         {
             Result = 0;
@@ -168,6 +172,7 @@ namespace ConsoleAppProject.App01
             }
             return Result;
         }
+        //This translates the disctionary values giving the required infomation for a successful converison
         public double UnitConversionParser(string data, int dataType)
         {
             Splitter = data.Split(",");

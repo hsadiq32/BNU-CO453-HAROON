@@ -106,9 +106,14 @@ namespace ConsoleAppProject.App01
         {
             WebVersion = version;
             UnitConversionData();
+            if(Unit1 == null || Unit2 == null)
+            {
+                Unit1 = "metres";
+                Unit2 = "metres";
+            }
             if (Unit1.Equals(Unit2))
             {
-                return Unit1Value;
+                return Unit1Value; 
             }
             else
             {

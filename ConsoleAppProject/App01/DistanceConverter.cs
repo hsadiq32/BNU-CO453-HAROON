@@ -106,7 +106,14 @@ namespace ConsoleAppProject.App01
         {
             WebVersion = version;
             UnitConversionData();
-            return Converter(Unit2, Converter(Unit1, Unit1Value, false), true);
+            if (Unit1.Equals(Unit2))
+            {
+                return Unit1Value;
+            }
+            else
+            {
+                return Converter(Unit2, Converter(Unit1, Unit1Value, false), true);
+            }
         }
         public void PrintUnits()
         {

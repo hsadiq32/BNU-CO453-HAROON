@@ -1,6 +1,7 @@
 ﻿using System;
 using ConsoleAppProject.App01;
 using ConsoleAppProject.App02;
+using ConsoleAppProject.App03;
 
 namespace ConsoleAppProject
 {
@@ -40,11 +41,12 @@ namespace ConsoleAppProject
                 syntaxGen.HeaderGen("BNU CO453 Applications Programming 2020-2021!");
                 Console.WriteLine(syntaxGen.SyntaxFiller1("1. App01 - Distance Converter"));
                 Console.WriteLine(syntaxGen.SyntaxFiller1("2. App02 - BMI Calculator"));
-                Console.WriteLine(syntaxGen.SyntaxFiller1("3. Quit"));
+                Console.WriteLine(syntaxGen.SyntaxFiller1("3. App03 - Student Marks"));
+                Console.WriteLine(syntaxGen.SyntaxFiller1("4. Quit"));
                 syntaxGen.SyntaxFiller2();
                 Console.Beep();
 
-                int option = reader.OptionInputChecker("Enter Option:", 3);
+                int option = reader.OptionInputChecker("Enter Option:", 4);
                 if (option == 1)
                 {
                     App01();
@@ -53,7 +55,11 @@ namespace ConsoleAppProject
                 {
                     App02();
                 }
-                else if(option == 3)
+                else if (option == 3)
+                {
+                    App03();
+                }
+                else if(option == 4)
                 {
                     Console.WriteLine(syntaxGen.SyntaxFiller1(""));
                     Console.WriteLine(syntaxGen.SyntaxFiller1("Goodbye"));
@@ -72,6 +78,11 @@ namespace ConsoleAppProject
         {
             BMI bmi = new BMI();
             bmi.Run();
+        }
+        public static void App03()
+        {
+            StudentMarks studentMarks = new StudentMarks();
+            studentMarks.Run();
         }
     }
 }

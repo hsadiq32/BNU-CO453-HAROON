@@ -77,5 +77,17 @@ namespace ConsoleAppProject
             }
             return data;
         }
+
+        public bool NullChecker(object sampleData)
+        {
+            if(sampleData == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

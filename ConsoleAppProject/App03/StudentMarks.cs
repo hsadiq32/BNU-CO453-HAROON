@@ -8,6 +8,7 @@ namespace ConsoleAppProject.App03
         SyntaxGenerator syntaxGen = new SyntaxGenerator();
         ArrayList markData = new ArrayList();
         InputReader reader = new InputReader();
+        Student student = new Student();
         public string Grade { get; set; }
         public int Marks { get; set; }
         public string GradeDescription { get; set; }
@@ -15,6 +16,8 @@ namespace ConsoleAppProject.App03
 
         public void Run()
         {
+            student.ReadAll();
+            student.AddStudentCheck();
             Marks = reader.IntInputChecker("Marks:");
             Console.WriteLine(GradeIdentifier(0));
             Console.WriteLine(GradeIdentifier(1));
@@ -23,9 +26,9 @@ namespace ConsoleAppProject.App03
         public string GradeIdentifier(int dataOutputType)
         {
             GradeData();
-            foreach (string arrayData in markData)
+            if (!reader.NullChecker(Marks) && Marks != 0)
             {
-                if (!reader.NullChecker(Marks))
+                foreach (string arrayData in markData)
                 {
                     if (Marks <= MarkRange)
                     {
@@ -39,11 +42,11 @@ namespace ConsoleAppProject.App03
                         GradeDescription = splitter[2];
                     }
                 }
-                else
-                {
-                    Grade = "";
-                    GradeDescription = "";
-                }
+            }
+            else 
+            {
+                Grade = "F";
+                GradeDescription = "Fail";
             }
             if (dataOutputType == 0)
             {

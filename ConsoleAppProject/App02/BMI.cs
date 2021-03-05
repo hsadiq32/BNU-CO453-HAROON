@@ -49,7 +49,7 @@ namespace ConsoleAppProject.App02
             Console.WriteLine(syntaxGen.SyntaxFiller1("Choose metric:"));
             Console.WriteLine(syntaxGen.SyntaxFiller1(" 1. Metric"));
             Console.WriteLine(syntaxGen.SyntaxFiller1(" 2. Imperical"));
-            int option = reader.OptionInputChecker("Enter Option:", 2);
+            int option = reader.RangeInputChecker("Enter Option:", 1, 2);
             UnitVal = false;
             Height = 0;
             Weight = 0;

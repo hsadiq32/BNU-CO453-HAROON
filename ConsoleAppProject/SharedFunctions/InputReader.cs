@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 namespace ConsoleAppProject
 {
     /// <summary>
@@ -13,7 +14,7 @@ namespace ConsoleAppProject
 
         public int IntInputChecker(string consoleWrite)
         {
-            int data = 0;
+            int data;
             while (true)
             {
                 Console.Write(syntaxGen.SyntaxFiller1(consoleWrite));
@@ -31,9 +32,29 @@ namespace ConsoleAppProject
             return data;
         }
 
-        public int OptionInputChecker(string consoleWrite, int maxoption)
+        public string StringInputChecker(string consoleWrite)
         {
-            int data = 0;
+            string data = null;
+            while (true)
+            {
+                Console.Write(syntaxGen.SyntaxFiller1(consoleWrite));
+                data = Console.ReadLine();
+                if (!data.Any(char.IsDigit))
+                {
+                    
+                    break;
+                }
+                else
+                {
+                    Console.Write(syntaxGen.SyntaxFiller1("Invalid input\n"));
+                }
+            }
+            return data;
+        }
+
+        public int RangeInputChecker(string consoleWrite, int minoption, int maxoption)
+        {
+            int data;
             while (true)
             {
                 Console.Write(syntaxGen.SyntaxFiller1(consoleWrite));
@@ -41,7 +62,7 @@ namespace ConsoleAppProject
                 try
                 {
                     data = (int)Convert.ToInt64(value);
-                    if (data <= maxoption & data > 0)
+                    if (data <= maxoption && data >= minoption)
                     {
                         break;
                     }

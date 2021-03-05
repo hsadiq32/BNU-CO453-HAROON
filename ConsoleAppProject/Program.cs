@@ -46,7 +46,7 @@ namespace ConsoleAppProject
                 syntaxGen.SyntaxFiller2();
                 Console.Beep();
 
-                int option = reader.OptionInputChecker("Enter Option:", 4);
+                int option = reader.RangeInputChecker("Enter Option:", 1, 4);
                 if (option == 1)
                 {
                     App01();
@@ -56,7 +56,7 @@ namespace ConsoleAppProject
                     App02();
                 }
                 else if (option == 3)
-                {
+                {   
                     App03();
                 }
                 else if(option == 4)

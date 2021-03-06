@@ -10,7 +10,7 @@ namespace ConsoleAppProject
     /// </author>
     public class SyntaxGenerator
     {
-        private string LineFiller(string text, int space)
+        public string LineFiller(string text, int space)
         {
             int c = 0;
             string fill = "";

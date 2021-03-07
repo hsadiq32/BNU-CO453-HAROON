@@ -152,19 +152,20 @@ namespace ConsoleAppProject.App03
                 if (!check)
                 {
                     db.ReadAllDB("Students");
-                    string a = db.CountColumnDB("Students", "grade", "grade = 'A'");
-                    string b = db.CountColumnDB("Students", "grade", "grade = 'B'");
-                    string c = db.CountColumnDB("Students", "grade", "grade = 'C'");
-                    string d = db.CountColumnDB("Students", "grade", "grade = 'D'");
-                    string f = db.CountColumnDB("Students", "grade", "grade = 'F'");
+                    double a = Convert.ToDouble(db.CountColumnDB("Students", "grade", "grade = 'A'"));
+                    double b = Convert.ToDouble(db.CountColumnDB("Students", "grade", "grade = 'B'"));
+                    double c = Convert.ToDouble(db.CountColumnDB("Students", "grade", "grade = 'C'"));
+                    double d = Convert.ToDouble(db.CountColumnDB("Students", "grade", "grade = 'D'"));
+                    double f = Convert.ToDouble(db.CountColumnDB("Students", "grade", "grade = 'F'"));
+                    double total = a + b + c + d + f;
                     Console.WriteLine(syntaxGen.SyntaxFiller1(" ┌────────────┐ ┌────────────┐"));
                     Console.WriteLine(syntaxGen.SyntaxFiller1(" │" + $@"{" Grades",-12}│ │{" Marks",-12}│"));
                     Console.WriteLine(syntaxGen.SyntaxFiller1(" ├───┬────────┤ ├──────┬─────┤"));
-                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ A │" + $@"{" " + a,-8}│ │ Min  │{" " + min,-5}│"));
-                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ B │" + $@"{" " + b,-8}│ │ Max  │{" " + max,-5}│"));
-                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ C │" + $@"{" " + c,-8}│ │ Mean │{" " + mean,-5}│"));
-                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ D │" + $@"{" " + d,-8}│ └──────┴─────┘"));
-                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ F │" + $@"{" " + f,-8}│"));
+                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ A │" + $@"{" " + parser.GradeData(total, a),-8}│ │ Min  │{" " + min,-5}│"));
+                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ B │" + $@"{" " + parser.GradeData(total,b),-8}│ │ Max  │{" " + max,-5}│"));
+                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ C │" + $@"{" " + parser.GradeData(total, c),-8}│ │ Mean │{" " + mean,-5}│"));
+                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ D │" + $@"{" " + parser.GradeData(total, d),-8}│ └──────┴─────┘"));
+                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ F │" + $@"{" " + parser.GradeData(total, f),-8}│"));
                     Console.WriteLine(syntaxGen.SyntaxFiller1(" └───┴────────┘"));
                 }
                 Console.WriteLine(syntaxGen.SyntaxFiller1("Options: "));

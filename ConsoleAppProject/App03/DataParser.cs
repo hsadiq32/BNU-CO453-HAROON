@@ -21,22 +21,27 @@ namespace ConsoleAppProject.App03
             Console.WriteLine(percentage);
             return Math.Round((double)percentage, 1);
         }
-        public string GradeIdentifier(int mark)
+        public string GradeIdentifier(int mark, int option)
         {
-            mark = reader.RangeInputChecker("number:", 0, 100);
             mark = Convert.ToInt16(db.ReadMaxValGradeDB("Grades", "range", "range <=" + mark));
             string grade = db.ReadGradeDB("Grades", "grade", "range =" + mark);
             string classification =  db.ReadGradeDB("Grades", "classification", "range =" + mark);
-            return grade + "," + classification;
+            if(option == 0)
+            {
+                return grade;
+            }
+            else if (option == 1)
+            {
+                return classification;
+            }
+            else
+            {
+                return "NaN";
+            }
         }
-        public void GradeData()
+        public string GradeData(double total, double mark)
         {
-            markData.Remove(markData);
-            markData.Add("39,F,Fail");
-            markData.Add("49,D,Third Class");
-            markData.Add("59,C,Lower Second Class");
-            markData.Add("69,B,Upper Second Class");
-            markData.Add("70,A,First Class");
+            return mark + ": " + Math.Round((double)(mark / total * 100), 1);
         }
     }
 }

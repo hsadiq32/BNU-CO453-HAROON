@@ -2,49 +2,62 @@
 @{
     ViewData["Title"] = "Index";
 }
+<div class="jumbotron">
+    <h3 class="display-4 text-center">Student Marks</h3>
+    <h4 class="text-center" style="color:#646464">Home</h4>
+    <hr class="my-4 text-center">
+    <div class="d-flex justify-content-center" style="margin-bottom:20px">
+        <a class="btn btn-light" style="margin-right:5px;width:80px" asp-action="Create">
+            <img src="~/img/App03/Buttons/create.svg" alt="Create">
+        </a>
+        <a class="btn btn-light" style="margin-left:5px;width:80px" asp-action="Analyse">
+            <img src="~/img/App03/Buttons/analyse.svg" alt="Analyse">
+        </a>
+    </div>
+    <div style="background-color:white;margin: 0px 10px 0px 10px;border-radius:5px">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Marks)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Grade)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Marks)
+                        </td>
+                        <td>
+                            @item.GradeFinder()
+                        </td>
+                        <td class="d-flex justify-content-end">
+                            <a class="btn btn-secondary btn-success" style="margin: 0px 4px 0px 4px;" asp-action="Edit" asp-route-id="@item.ID">
+                                <img src="~/img/App03/Buttons/edit.svg" alt="Edit">
+                            </a>
+                            <a class="btn btn-secondary btn-warning" style="margin: 0px 4px 0px 4px;" asp-action="Details" asp-route-id="@item.ID">
+                                <img src="~/img/App03/Buttons/details.svg" alt="Details">
+                            </a>
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<p>
-    <a asp-action="Analyse">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Marks)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Grade)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Marks)
-                </td>
-                <td>
-                    @item.GradeFinder()
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                            <a class="btn btn-secondary btn-danger" style="margin: 0px 4px 0px 4px;" asp-action="Delete" asp-route-id="@item.ID">
+                                <img src="~/img/App03/Buttons/delete.svg" alt="Delete">
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

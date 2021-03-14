@@ -2,7 +2,9 @@
 @{
     ViewData["Title"] = "Analyse";
 }
+<link rel="stylesheet" href="~/stylesheet/App03_Analyse.css">
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
     google.charts.load('current', { 'packages': ['corechart'] });
     google.charts.setOnLoadCallback(drawChart);
@@ -19,24 +21,98 @@
         ]);
 
         var options = {
-            title: 'My Daily Activities',
+            title: 'Grade Profile',
             is3D: true,
+            'height':275,
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
         chart.draw(data, options);
+
+        $(window).on("throttledresize", function (event) {
+            var options = {
+                width: '100%',
+                height: '100%'
+            };
+
+            var data = google.visualization.arrayToDataTable([]);
+            drawChart(data, options);
+        });
     }
 </script>
-
-<h1>Analyse</h1>
-<h1>A - @Model.GradeA%</h1>
-<h1>B - @Model.GradeB%</h1>
-<h1>C - @Model.GradeC%</h1>
-<h1>D - @Model.GradeD%</h1>
-<h1>F - @Model.GradeF%</h1>
-<h1>Mean - @Model.Mean</h1>
-<h1>Min - @Model.Min</h1>
-<h1>Max - @Model.Max</h1>
-<div id="piechart" style="width: 900px; height: 500px;"></div>
-
+<div class="jumbotron">
+    <h3 class="display-4 text-center">Student Marks</h3>
+    <h4 class="text-center" style="color:#646464">Analyse</h4>
+    <hr class="my-4 text-center">
+    <div class="d-flex justify-content-center" style="margin-bottom:20px">
+        <a class="btn btn-warning" style="margin-left:5px;width:80px" asp-action="Index">
+            <img src="~/img/App03/Buttons/back.svg" alt="Analyse">
+        </a>
+    </div>
+    <div class="container">
+        <div class="row" style="margin:15px">
+            <div class="col-lg-6">
+                <div class="d-flex justify-content-center">
+                    <table class="table table-bordered" style="margin-left:10px;margin-right:10px">
+                        <thead>
+                            <tr>
+                                <th scope="col">Grade</th>
+                                <th scope="col">Percentage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">A</th>
+                                <td>@Model.GradeA%</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">B</th>
+                                <td>@Model.GradeB%</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">C</th>
+                                <td>@Model.GradeC%</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">D</th>
+                                <td>@Model.GradeD%</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">F</th>
+                                <td>@Model.GradeF%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered" style="margin-left:10px;margin-right:10px">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Stats</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Min</th>
+                                <td>@Model.Min</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Max</th>
+                                <td>@Model.Max</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Mean</th>
+                                <td>@Model.Mean</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+                </div>
+            <div class="col-lg-6" style="background-color:white; border-radius:5px;min-height:275px">
+                <div id="chart_wrap">
+                    <div id="chart_div">
+                        <div id="piechart"></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+</div>

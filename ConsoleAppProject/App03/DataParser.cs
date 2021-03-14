@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace ConsoleAppProject.App03
 {
-    class DataParser
+    public class DataParser
     {
         SyntaxGenerator syntaxGen = new SyntaxGenerator();
         ArrayList markData = new ArrayList();

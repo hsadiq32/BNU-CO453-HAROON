@@ -21,7 +21,6 @@
         ]);
 
         var options = {
-            title: 'Grade Profile',
             is3D: true,
             'height':275,
         };
@@ -49,15 +48,16 @@
             <img src="~/img/App03/Buttons/back.svg" alt="Analyse">
         </a>
     </div>
-    <div class="container">
+    <div style="background-color:white;margin: 0px 10px 0px 10px;border-radius:5px;margin:5px">
         <div class="row" style="margin:15px">
             <div class="col-lg-6">
-                <div class="d-flex justify-content-center">
-                    <table class="table table-bordered" style="margin-left:10px;margin-right:10px">
+                <h6 class="text-center font-weight-bold" style="margin-top:30px;margin-bottom:30px;color:#646464">Statistics</h6>
+                <div class="d-flex justify-content-center" style="margin-top:30px">
+                    <table class="table table-bordered" style="margin-right:10px;">
                         <thead>
                             <tr>
-                                <th scope="col">Grade</th>
-                                <th scope="col">Percentage</th>
+                                <th class="text-center" scope="col">Grade</th>
+                                <th class="text-center" scope="col">Percentage</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -83,10 +83,10 @@
                             </tr>
                         </tbody>
                     </table>
-                    <table class="table table-bordered" style="margin-left:10px;margin-right:10px">
+                    <table class="table table-bordered" style="margin-left:10px;">
                         <thead>
                             <tr>
-                                <th colspan="2">Stats</th>
+                                <th class="text-center" colspan="2">Stats</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -104,12 +104,13 @@
                             </tr>
                         </tbody>
                     </table>
-            </div>
                 </div>
-            <div class="col-lg-6" style="background-color:white; border-radius:5px;min-height:275px">
+            </div>
+            <div class="col-lg-6" style="min-height:275px">
+                <h6 class="text-center font-weight-bold" style="margin-top:30px;margin-bottom:30px;color:#646464">Grade Profile</h6>
                 <div id="chart_wrap">
-                    <div id="chart_div">
-                        <div id="piechart"></div>
+                    <div id="chart_div" class="d-flex justify-content-center" style="margin-left:12%">
+                        <div id="piechart" style="margin-left:auto;margin-right:auto;width:300%;height:75%"></div>
                     </div>
                 </div>
             </div>

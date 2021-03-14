@@ -11,7 +11,7 @@ namespace ConsoleAppProject.App03
         DataParser parser = new DataParser();
         public int ID { get; set; }
         [Required(ErrorMessage = "Name is Required.")]
-        [RegularExpression("^[a-zA-Z]*$", ErrorMessage = "Only Alphabetical Characters are Allowed.")]
+        [RegularExpression("^[a-zA-Z ']*$", ErrorMessage = "Only Alphabetical Characters are Allowed.")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Marks is Required.")]
         [Range(0, 100)]

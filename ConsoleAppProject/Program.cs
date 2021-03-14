@@ -31,6 +31,14 @@ namespace ConsoleAppProject
             }
         }
 
+        public static StudentMarks StudentMarks
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public static void Main(string[] args)
         {
             while (true)

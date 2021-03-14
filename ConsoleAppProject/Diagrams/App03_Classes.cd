@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ConsoleAppProject.App03.DatabaseManager">
+    <Position X="11.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KAAAAABQAAAAEAAABAAAAEAAggAEAAAAkAAAAQAAABA=</HashCode>
+      <FileName>App03\DatabaseManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleAppProject.App03.DataParser">
+    <Position X="11.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAEAAAAAQAAAABAAAAAAAAAAgAAAQAAQAAAEQAQI=</HashCode>
+      <FileName>App03\DataParser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleAppProject.App03.Student">
+    <Position X="9.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAagAAAFIAAAAQAACAAAAAAAAZBAAEQIAA=</HashCode>
+      <FileName>App03\Student.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DataParser" />
+      <Property Name="DatabaseManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ConsoleAppProject.InputReader">
+    <Position X="6.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAEAAgAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAIAAAgA=</HashCode>
+      <FileName>SharedFunctions\InputReader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleAppProject.SyntaxGenerator">
+    <Position X="9.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAADAAAAAAAAAAAAAAABAAAQ=</HashCode>
+      <FileName>SharedFunctions\SyntaxGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsoleAppProject.App03.StudentMarks">
+    <Position X="6" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAQBAYAEAAEAAAIAAAACAAABAEAAARAAEAIAI=</HashCode>
+      <FileName>App03\StudentMarks.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Grades" />
+      <Property Name="Student" />
+      <Property Name="DataParser" />
+      <Property Name="DatabaseManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="ConsoleAppProject.Program">
+    <Position X="3.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAIAAAMAAAAAAAAAAAAAAAAAABQAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="StudentMarks" />
+    </ShowAsAssociation>
+  </Class>
+  <Enum Name="ConsoleAppProject.App03.Grades">
+    <Position X="7.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtAEAAAA=</HashCode>
+      <FileName>App03\Grades.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

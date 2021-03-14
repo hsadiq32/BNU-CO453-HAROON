@@ -20,6 +20,39 @@ namespace ConsoleAppProject.App03
         public string Min { get; set; }
         public string Max { get; set; }
         public string Mean { get; set; }
+
+        public Grades Grades
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public Student Student
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        internal DataParser DataParser
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        internal DatabaseManager DatabaseManager
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public void Run()
         {
             syntaxGen.SubheaderGen("Student Marks");

@@ -17,6 +17,23 @@ namespace ConsoleAppProject.App03
         [Range(0, 100)]
         public int Marks { get; set; }
         public string Grade { get; set; }
+
+        internal DataParser DataParser
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        internal DatabaseManager DatabaseManager
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public string GradeFinder()
         {
             string grade = "";

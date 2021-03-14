@@ -18,7 +18,6 @@ namespace ConsoleAppProject.App03
         public double PercentileCalc(double lowVal, double highVal, double mark)
         {
             double percentage = (mark - lowVal) / (highVal - lowVal) * 100;
-            Console.WriteLine(percentage);
             return Math.Round((double)percentage, 1);
         }
         public string GradeIdentifier(int mark, int option)

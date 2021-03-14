@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ConsoleAppProject.App03
 {
@@ -10,9 +10,36 @@ namespace ConsoleAppProject.App03
         InputReader reader = new InputReader();
         DataParser parser = new DataParser();
         public int ID { get; set; }
+        [Required(ErrorMessage = "Name is Required.")]
+        [RegularExpression("^[a-zA-Z]*$", ErrorMessage = "Only Alphabetical Characters are Allowed.")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "Marks is Required.")]
+        [Range(0, 100)]
         public int Marks { get; set; }
         public string Grade { get; set; }
+        public string GradeFinder()
+        {
+            string grade = "";
+            int markRange = 70;
+            string[] gradeData = { "70,A", "60,B", "50,C", "40,D", "0,F" };
+            for (int i = 0; i < 5; i++)
+            {
+                if (i != 4)
+                {
+                    if (markRange <= Marks)
+                    {
+                        grade = gradeData[i][3].ToString();
+                        break;
+                    }
+                    markRange -= 10;
+                }
+                else
+                {
+                    grade = "F";
+                }
+            }
+            return grade;
+        }
         public void StudentMatchCheck()
         {
             while (true)
@@ -56,7 +83,6 @@ namespace ConsoleAppProject.App03
             {
                 Name = reader.StringInputChecker("Enter Name:");
             }
-            Console.WriteLine(Name);
             Marks = reader.RangeInputChecker("Marks:", 0, 100);
             Grade = parser.GradeIdentifier(Marks, 0);
             db.InsertDB("Students", "name,marks,grade", "'" + Name + "'," + Marks + ",'" + Grade + "'");
@@ -64,9 +90,9 @@ namespace ConsoleAppProject.App03
         }
         public void StudentOptions()
         {
-            int min = 0;
-            int max = 0;
             bool choice = false;
+            int min;
+            int max;
             try
             {
                 min = Convert.ToInt16(db.ReadMinValDB("Students", "Marks"));
@@ -145,6 +171,7 @@ namespace ConsoleAppProject.App03
                 }
                 catch (FormatException)
                 {
+                    Console.WriteLine(syntaxGen.SyntaxFiller1(""));
                     Console.WriteLine(syntaxGen.SyntaxFiller1("Data Not Found, add a student to see results"));
                     Console.WriteLine(syntaxGen.SyntaxFiller1(""));
                     check = true;
@@ -158,15 +185,15 @@ namespace ConsoleAppProject.App03
                     double d = Convert.ToDouble(db.CountColumnDB("Students", "grade", "grade = 'D'"));
                     double f = Convert.ToDouble(db.CountColumnDB("Students", "grade", "grade = 'F'"));
                     double total = a + b + c + d + f;
-                    Console.WriteLine(syntaxGen.SyntaxFiller1(" ┌────────────┐ ┌────────────┐"));
-                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │" + $@"{" Grades",-12}│ │{" Marks",-12}│"));
-                    Console.WriteLine(syntaxGen.SyntaxFiller1(" ├───┬────────┤ ├──────┬─────┤"));
-                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ A │" + $@"{" " + parser.GradeData(total, a),-8}│ │ Min  │{" " + min,-5}│"));
-                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ B │" + $@"{" " + parser.GradeData(total,b),-8}│ │ Max  │{" " + max,-5}│"));
-                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ C │" + $@"{" " + parser.GradeData(total, c),-8}│ │ Mean │{" " + mean,-5}│"));
-                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ D │" + $@"{" " + parser.GradeData(total, d),-8}│ └──────┴─────┘"));
-                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ F │" + $@"{" " + parser.GradeData(total, f),-8}│"));
-                    Console.WriteLine(syntaxGen.SyntaxFiller1(" └───┴────────┘"));
+                    Console.WriteLine(syntaxGen.SyntaxFiller1(" ┌──────────────┐ ┌────────────┐"));
+                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │" + $@"{" Grades",-14}│ │{" Marks",-12}│"));
+                    Console.WriteLine(syntaxGen.SyntaxFiller1(" ├───┬──────────┤ ├──────┬─────┤"));
+                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ A │" + $@"{" " + parser.GradeData(total, a) + "%",-10}│ │ Min  │{" " + min,-5}│"));
+                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ B │" + $@"{" " + parser.GradeData(total,b) + "%",-10}│ │ Max  │{" " + max,-5}│"));
+                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ C │" + $@"{" " + parser.GradeData(total, c) + "%",-10}│ │ Mean │{" " + mean,-5}│"));
+                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ D │" + $@"{" " + parser.GradeData(total, d) + "%",-10}│ └──────┴─────┘"));
+                    Console.WriteLine(syntaxGen.SyntaxFiller1(" │ F │" + $@"{" " + parser.GradeData(total, f) + "%",-10}│"));
+                    Console.WriteLine(syntaxGen.SyntaxFiller1(" └───┴──────────┘"));
                 }
                 Console.WriteLine(syntaxGen.SyntaxFiller1("Options: "));
                 Console.WriteLine(syntaxGen.SyntaxFiller1(" 1. Add Student "));

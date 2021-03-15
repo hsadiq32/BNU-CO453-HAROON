@@ -3,56 +3,38 @@ using System.Collections;
 using System.Linq;
 
 namespace ConsoleAppProject.App03
+/// <summary>
+/// This class is used to manage student data for the webApp version
+/// </summary>
+/// <author>
+/// Haroon Sadiq
+/// </author>
 {
     public class StudentMarks
     {
-        ArrayList data = new ArrayList();
+        // Prerequisite classes
         SyntaxGenerator syntaxGen = new SyntaxGenerator();
         Student student = new Student();
         DatabaseManager db = new DatabaseManager();
-        DataParser parse = new DataParser();
+        // Sends overall data in a string array
         public string[] Data { get; set; }
+        // Grade A amount
         public string GradeA { get; set; }
+        // Grade B amount
         public string GradeB { get; set; }
+        // Grade C amount
         public string GradeC { get; set; }
+        // Grade D amount
         public string GradeD { get; set; }
+        // Grade F amount
         public string GradeF { get; set; }
+        // Min amount
         public string Min { get; set; }
+        // Max amount
         public string Max { get; set; }
+        // Min amount
         public string Mean { get; set; }
-
-        public Grades Grades
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public Student Student
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        internal DataParser DataParser
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        internal DatabaseManager DatabaseManager
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
+        // run method for console app
         public void Run()
         {
             syntaxGen.SubheaderGen("Student Marks");
@@ -60,7 +42,7 @@ namespace ConsoleAppProject.App03
             student.OverallStats();
             syntaxGen.SyntaxFiller2();
         }
-
+        // Finds grade value using mark data
         public string GradeFinder(int mark)
         {
             string grade = "";
@@ -84,6 +66,7 @@ namespace ConsoleAppProject.App03
             }
             return grade;
         }
+        // A multifuncational method which provides different data depending on what you want
         public double[] StatFinder(string option)
         {
             if (option.Contains("multi"))

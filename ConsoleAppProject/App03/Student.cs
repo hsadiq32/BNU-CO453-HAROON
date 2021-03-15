@@ -1,39 +1,34 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-
 namespace ConsoleAppProject.App03
+/// <summary>
+/// This class manages students data and prompts to modify, create and delete given data
+/// </summary>
+/// <author>
+/// Haroon Sadiq
+/// </author>
 {
     public class Student
     {
+        // Link required classes
         SyntaxGenerator syntaxGen = new SyntaxGenerator();
         DatabaseManager db = new DatabaseManager();
         InputReader reader = new InputReader();
         DataParser parser = new DataParser();
+        // ID of student
         public int ID { get; set; }
+        // Name of student with input protection
         [Required(ErrorMessage = "Name is Required.")]
         [RegularExpression("^[a-zA-Z ']*$", ErrorMessage = "Only Alphabetical Characters are Allowed.")]
         public string Name { get; set; }
+        // Marks of student with input protection
         [Required(ErrorMessage = "Marks is Required.")]
         [Range(0, 100)]
         public int Marks { get; set; }
+        // Grade of student
         public string Grade { get; set; }
 
-        internal DataParser DataParser
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        internal DatabaseManager DatabaseManager
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
+        // Finds grade using an efficient list range algorithm I made
         public string GradeFinder()
         {
             string grade = "";
@@ -57,6 +52,7 @@ namespace ConsoleAppProject.App03
             }
             return grade;
         }
+        // Checks in the SQLite databse if student already exists, if so allow the user to proceed
         public void StudentMatchCheck()
         {
             while (true)
@@ -73,6 +69,7 @@ namespace ConsoleAppProject.App03
                 }
             }
         }
+        // Checks in the SQLite databse if student already exists, if not allow the user to proceed
         public void StudentConflictCheck()
         {
             while (true)
@@ -89,6 +86,7 @@ namespace ConsoleAppProject.App03
                 }
             }
         }
+        // Adds student to the database
         public void AddStudent(bool check)
         {
             db.InitialiseTable();
@@ -105,6 +103,7 @@ namespace ConsoleAppProject.App03
             db.InsertDB("Students", "name,marks,grade", "'" + Name + "'," + Marks + ",'" + Grade + "'");
             Console.WriteLine(syntaxGen.SyntaxFiller1("Added " + Name + " Successfully"));
         }
+        // Student super user options, allowing the user to modify names and marks and delete the students data
         public void StudentOptions()
         {
             bool choice = false;
@@ -147,6 +146,7 @@ namespace ConsoleAppProject.App03
                     int option = reader.RangeInputChecker("Enter an Option: ", 1, 4);
                     if (option.Equals(1))
                     {
+                        // If changing the name check for conflicts to avoid duplicates in database
                         StudentConflictCheck();
                         db.UpdateDB("Students", "name = '" + Name + "'", "ID = " + id);
                     }
@@ -167,11 +167,13 @@ namespace ConsoleAppProject.App03
                 }
             }
         }
+        // Reads all data in database
         public void ReadAll()
         {
             db.CountColumnDB("Students", "grade", "grade = 'B'");
             db.ReadAllDB("Students");
         }
+        // Provides sleek looking tables to view overall data of students
         public void OverallStats()
         {
             while (true)

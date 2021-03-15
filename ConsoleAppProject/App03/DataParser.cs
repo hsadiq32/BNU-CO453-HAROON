@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Collections;
-
 namespace ConsoleAppProject.App03
+/// <summary>
+/// This class parses datatypes to be used in the code
+/// </summary>
+/// <author>
+/// Haroon Sadiq
+/// </author>
 {
     public class DataParser
     {
-        SyntaxGenerator syntaxGen = new SyntaxGenerator();
-        ArrayList markData = new ArrayList();
-        InputReader reader = new InputReader();
+        // Link to SQLite database manager class
         DatabaseManager db = new DatabaseManager();
-
-        public string Grade { get; set; }
-        public int Marks { get; set; }
-        public string GradeDescription { get; set; }
-        public int MarkRange { get; set; }
-
+        //Works out percentage
         public double PercentileCalc(double lowVal, double highVal, double mark)
         {
             double percentage = (mark - lowVal) / (highVal - lowVal) * 100;
             return Math.Round((double)percentage, 1);
         }
+        // Finds grade using the SQLite database
         public string GradeIdentifier(int mark, int option)
         {
             mark = Convert.ToInt16(db.ReadMaxValGradeDB("Grades", "range", "range <=" + mark));
@@ -38,6 +37,7 @@ namespace ConsoleAppProject.App03
                 return "NaN";
             }
         }
+        // Used for a formatted syntax in table view
         public string GradeData(double total, double mark)
         {
             return mark + ": " + Math.Round((double)(mark / total * 100), 1);

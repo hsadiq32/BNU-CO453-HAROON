@@ -11,7 +11,12 @@ namespace ConsoleAppProject
     public class InputReader
     {
         SyntaxGenerator syntaxGen = new SyntaxGenerator();
-
+        public string ReadInput(string consoleWrite)
+        {
+            Console.Write(syntaxGen.SyntaxFiller1(consoleWrite));
+            string data = Console.ReadLine();
+            return data;
+        }
         public int IntInputChecker(string consoleWrite)
         {
             int data;

@@ -100,8 +100,8 @@ namespace ConsoleAppProject
         }
         public static void App04()
         {
-            StudentMarks studentMarks = new StudentMarks();
-            studentMarks.Run();
+            NetworkApp socialNetwork = new NetworkApp();
+            socialNetwork.DisplayMenu();
         }
     }
 }

@@ -87,27 +87,21 @@ img {
   font-size: x-small;
   font-family: 'Product Sans';
 }
-.text-img{
+.text-img .image-txt .image-txt2 .-txt2 .-txt .-img{
   display:none;
 }
-.image-txt{
-  display:none;
-}
-.image-txt2{
-  display:none;
-}
-.image-img{
+.PhotoPosts-img{
   height: 79%;
   margin-top: 9px;
 }
-.text-txt{
-height: 70px;
-background: url("../../assets/img/tgf70-ukibe.svg")
-left / contain no-repeat;margin-top: 14px;
+.MessagePosts-txt {
+    height: 70px;
+    background: url("../../assets/img/tgf70-ukibe.svg") left / no-repeat;
+    margin-top: 14px;
 }
-.text-txt2{
-height: 70px;
-background: url("../../assets/img/tgf70-ukibe.svg")
-left / contain no-repeat;margin-top: 14px;
-transform: rotate(180deg);
+.MessagePosts-txt2 {
+    height: 70px;
+    background: url("../../assets/img/tgf70-ukibe.svg") left / no-repeat;
+    margin-top: 14px;
+    transform: rotate(180deg);
 }

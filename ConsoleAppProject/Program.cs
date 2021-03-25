@@ -2,6 +2,7 @@
 using ConsoleAppProject.App01;
 using ConsoleAppProject.App02;
 using ConsoleAppProject.App03;
+using ConsoleAppProject.App04;
 
 namespace ConsoleAppProject
 {
@@ -50,7 +51,8 @@ namespace ConsoleAppProject
                 Console.WriteLine(syntaxGen.SyntaxFiller1("1. App01 - Distance Converter"));
                 Console.WriteLine(syntaxGen.SyntaxFiller1("2. App02 - BMI Calculator"));
                 Console.WriteLine(syntaxGen.SyntaxFiller1("3. App03 - Student Marks"));
-                Console.WriteLine(syntaxGen.SyntaxFiller1("4. Quit"));
+                Console.WriteLine(syntaxGen.SyntaxFiller1("4. App04 - Social Network"));
+                Console.WriteLine(syntaxGen.SyntaxFiller1("5. Quit"));
                 syntaxGen.SyntaxFiller2();
                 Console.Beep();
 
@@ -67,7 +69,11 @@ namespace ConsoleAppProject
                 {   
                     App03();
                 }
-                else if(option == 4)
+                else if (option == 4)
+                {
+                    App04();
+                }
+                else if(option == 5)
                 {
                     Console.WriteLine(syntaxGen.SyntaxFiller1(""));
                     Console.WriteLine(syntaxGen.SyntaxFiller1("Goodbye"));
@@ -88,6 +94,11 @@ namespace ConsoleAppProject
             bmi.Run();
         }
         public static void App03()
+        {
+            StudentMarks studentMarks = new StudentMarks();
+            studentMarks.Run();
+        }
+        public static void App04()
         {
             StudentMarks studentMarks = new StudentMarks();
             studentMarks.Run();

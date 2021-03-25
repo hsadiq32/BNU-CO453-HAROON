@@ -19,6 +19,7 @@ namespace ConsoleAppProject.App03
         public int ID { get; set; }
         // Name of student with input protection
         [Required(ErrorMessage = "Name is Required.")]
+        [StringLength(30)]
         [RegularExpression("^[a-zA-Z ']*$", ErrorMessage = "Only Alphabetical Characters are Allowed.")]
         public string Name { get; set; }
         // Marks of student with input protection

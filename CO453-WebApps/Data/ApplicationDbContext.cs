@@ -21,6 +21,5 @@ namespace CO453_WebApps.Data
         public DbSet<Post> Posts { get; set; }
         public DbSet<MessagePost> Messages { get; set; }
         public DbSet<PhotoPost> Photos { get; set; }
-
     }
 }

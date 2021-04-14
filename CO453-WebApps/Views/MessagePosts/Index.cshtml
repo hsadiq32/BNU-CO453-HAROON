@@ -5,7 +5,7 @@
 }
 <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 <link rel="stylesheet" href="~/css/Product%20Sans.css" />
-<link rel="stylesheet" href="~/css/styles.css" />
+<link rel="stylesheet" href="~/css/App04styles.css" />
 <h1>Index</h1>
 
 <p>
@@ -67,7 +67,6 @@
         {
             <div class="message-box">
                 <div class="box-header-wrapper">
-                    <img class="box-img-user" src="assets/img/2fe8053c01e6dbc40451832248df5e4f.jpg">
                     <p class="box-text-username">@Html.DisplayFor(modelItem => item.Username)</p>
                     <div class="d-flex justify-content-around box-wrapper-icons">
                         <a asp-action="Edit" asp-route-id="@item.PostID">
@@ -99,12 +98,12 @@
                         </a>
                     </div>
                 </div>
-                <div class="text-img"><img class="box-img-thumbnail" src="assets/img/2fe8053c01e6dbc40451832248df5e4f.jpg"></div>
-                <div class="text-txt"></div>
+                <div class="@item.DiscriminatorValue-img"><img class="box-img-thumbnail" src="assets/img/2fe8053c01e6dbc40451832248df5e4f.jpg" alt=""></div>
+                <div class="@item.DiscriminatorValue-txt"></div>
                 <div class="box-text-wrapper d-flex h-100" style="height: 100%;">
                     <p class="text-center box-text-description align-self-center" style="width: 100%;font-size: 165%;margin-bottom: 0px;padding: 3px;padding-bottom: 0px;">@Html.DisplayFor(modelItem => item.Message)</p>
                 </div>
-                <div class="text-txt2"></div>
+                <div class="@item.DiscriminatorValue-txt2"></div>
             </div>
         }
     </div>

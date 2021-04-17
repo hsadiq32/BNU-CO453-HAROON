@@ -19,17 +19,27 @@ namespace CO453_WebApps.Controllers
             _context = context;
         }
 
-        // GET: Posts
-        public async Task<IActionResult> Index()
+        ////GET: Posts
+        //public async Task<IActionResult> Index()
+        //{
+        //    var messages = await _context.Messages.ToListAsync();
+        //    var photos = await _context.Photos.ToListAsync();
+
+        //    List<Post> Posts = new List<Post>();
+
+        //    Posts.AddRange(messages);
+        //    Posts.AddRange(photos);
+        //    return View(Posts);
+        //}
+        public async Task<IActionResult> Index(string userName)
         {
-            var messages = await _context.Messages.ToListAsync();
-            var photos = await _context.Photos.ToListAsync();
-
-            List<Post> Posts = new List<Post>();
-
-            Posts.AddRange(messages);
-            Posts.AddRange(photos);
-            return View(Posts);
+            var posts = from p in _context.Posts
+                        select p;
+            if (!String.IsNullOrEmpty(userName))
+            {
+                posts = posts.Where(u => u.Username == userName);
+            }
+            return View(await posts.ToListAsync());
         }
 
         // GET: Posts/Details/5

@@ -9,58 +9,19 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-controller="PhotoPosts" asp-action="Create">New Photo Post</a>
+    <a asp-controller="MessagePosts" asp-action="Create">New Message Post</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DiscriminatorValue)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            MessagePost message = null;
-            PhotoPost photo = null;
-            if (item is MessagePost)
-            {
-                message = (MessagePost)item;
-            }
-            if (item is PhotoPost)
-            {
-                photo = (PhotoPost)item;
-            }
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Username)
-                </td>
-                <td>
-                    @if (message != null)
-                    {
-                        <span>@message.Message</span>
-                    }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Username)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Username)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.PostID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.PostID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.PostID">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by Name:
+            <input type="text" name="userName"><input />
+            <input type="submit" value="search" class="btn btn-info"><input />
+            <a class="btn btn-secondary" asp-action="Index">Back to full search</a>
+        </p>
+    </div>
+</form>
 <div class="message-dashboard">
     <div class="row d-flex justify-content-around">
         @foreach (var item in Model)

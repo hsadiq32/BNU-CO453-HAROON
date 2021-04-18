@@ -18,6 +18,8 @@ namespace CO453_WebApps.Models
 
         public int Likes { get; set; }
 
+        public virtual ICollection<Comment> Comments { get; set; }
+
         /// <summary>
         /// comment
         /// </summary>

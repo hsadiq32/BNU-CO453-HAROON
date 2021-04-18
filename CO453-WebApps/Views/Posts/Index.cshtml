@@ -36,7 +36,8 @@
             {
                 photo = (PhotoPost)item;
             }
-        <div class="message-box">
+            string noneIMG = "not_found.png";
+            <div class="message-box">
             <div class="box-header-wrapper">
                 <p class="box-text-username">@Html.DisplayFor(modelItem => item.Username)</p>
                 <div class="d-flex justify-content-around box-wrapper-icons">
@@ -71,7 +72,7 @@
             </div>
             @if (item.DiscriminatorValue.Equals("PhotoPost"))
             {
-                <div class="PhotoPost-img"><img class="box-img-thumbnail" src="~/img/sample.jpg" onerror="this.style.display = 'none';" alt="@if (photo != null){@photo.Filename}"></div>
+                <div class="PhotoPost-img"><img class="box-img-thumbnail" src="~/App04Images/@if (photo != null) {@photo.Filename} else { @noneIMG } " onerror="this.style.display = 'none';" alt=""></div>
                 @if (photo != null)
                 {
                     <div class="box-text-wrapper d-flex">

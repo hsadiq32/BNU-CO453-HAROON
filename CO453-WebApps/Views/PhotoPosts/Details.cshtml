@@ -55,7 +55,49 @@
         </div>
     </div>
 </div>
-
+<div>
+    <h4>Comments</h4>
+    @if (Model.Comments == null || Model.Comments.Count() == 0)
+    {
+        <p>
+            No comments have been posted yet!
+        </p>
+    }
+    else
+    {
+        int count = 0;
+        foreach (Comment comment in Model.Comments)
+        {
+            count++;
+            <p>
+                @count. @comment.Text
+            </p>
+        }
+    }
+</div>
+<hr />
+<div>
+    <a class="btn btn-danger" title="Should only be availble to the author"
+       asp-action="Edit" asp-route-id="@Model.PostID">
+        Edit
+    </a>
+    <a class="btn btn-success" asp-action="Like" title="Like"
+       asp-route-id="@Model.PostID">
+        <i class="bi bi-hand-thumbs-up"></i>
+    </a>
+    <a class="btn btn-warning" asp-action="Unlike" title="Unlike"
+       asp-route-id="@Model.PostID">
+        <i class="bi bi-hand-thumbs-down"></i>
+    </a>
+    <a class="btn btn-info" asp-controller="Comments"
+       asp-action="Create" title="Add comment"
+       asp-route-id="@Model.PostID">
+        <i class="bi bi-chat-left-text"></i>
+        Comment
+    </a>
+    <a class="btn btn-secondary" asp-action="Index">&lt;&lt;Back to Photo Posts</a>
+</div>
+<hr />
 <div>
     <a asp-action="Edit" asp-route-id="@Model.PostID">Edit</a> |
     <a asp-action="Index">Back to List</a>

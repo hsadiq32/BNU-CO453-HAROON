@@ -45,10 +45,14 @@ namespace CO453_WebApps.Models
         }
 
         // GET: Comments/Create
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
-            ViewData["PostID"] = new SelectList(_context.Posts, "PostID", "Discriminator");
-            return View();
+            var posts = _context.Posts.ToList();
+            ViewBag.PostID = new SelectList(posts, "PostID", "UserName");
+            Comment comment = new Comment();
+            comment.PostID = id;
+
+            return View(comment);
         }
 
         // POST: Comments/Create

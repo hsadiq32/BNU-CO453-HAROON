@@ -18,7 +18,8 @@
             <th>
                 @Html.DisplayNameFor(model => model.Post)
             </th>
-            <th></th>
+            <th>@Html.DisplayNameFor(model => model.PostID)
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -26,6 +27,12 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Text)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Post)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostID)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.CommentID">Edit</a> |

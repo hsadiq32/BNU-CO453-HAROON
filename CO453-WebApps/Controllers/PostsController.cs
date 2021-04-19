@@ -31,13 +31,30 @@ namespace CO453_WebApps.Controllers
         //    Posts.AddRange(photos);
         //    return View(Posts);
         //}
-        public async Task<IActionResult> Index(string userName)
+        public async Task<IActionResult> Index(string sortOrder, string userName)
         {
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             var posts = from p in _context.Posts
                         select p;
             if (!String.IsNullOrEmpty(userName))
             {
                 posts = posts.Where(u => u.Username == userName);
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    posts = posts.OrderByDescending(s => s.Username);
+                    break;
+                case "Date":
+                    posts = posts.OrderBy(s => s.Timestamp);
+                    break;
+                case "date_desc":
+                    posts = posts.OrderByDescending(s => s.Timestamp);
+                    break;
+                default:
+                    posts = posts.OrderBy(s => s.Username);
+                    break;
             }
             return View(await posts.ToListAsync());
         }

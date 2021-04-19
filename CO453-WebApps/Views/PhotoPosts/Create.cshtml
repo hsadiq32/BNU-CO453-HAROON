@@ -12,36 +12,12 @@
 
 <h4>PhotoPost</h4>
 <hr />
-@*<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Filename" class="control-label"></label>
-
-                <input asp-for="Filename" type="file" name="filename" accept="image/gif, image/jpeg, image/png">
-                <span asp-validation-for="Filename" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Caption" class="control-label"></label>
-                <input asp-for="Caption" class="form-control" />
-                <span asp-validation-for="Caption" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>*@
-
-<div>
-    <a onclick="goBack()">Back to List</a>
+<div class="d-flex justify-content-center" style="margin-bottom:20px">
+    <a class="btn btn-warning" style="width:80px; border-radius:10px" onclick="goBack()">
+        <img src="~/img/Buttons/back.svg">
+    </a>
 </div>
+<hr />
 
 <script>
     function goBack() {
@@ -50,7 +26,7 @@
 </script>
 <div class="message-dashboard">
     <div class="row d-flex justify-content-around">
-        <form asp-action="Create" class="message-box">
+        <form asp-action="Create" class="message-box" style="height:auto;">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="box-header-wrapper">
                 @*<p class="box-text-username">@Html.DisplayFor(modelItem => item.Username)</p>*@
@@ -61,16 +37,16 @@
             </div>
             @*<img class="box-img-thumbnail" src="~/App04Images/not_found.png" onerror="this.style.display = 'none';" alt="">*@
             <div class="form-group">
-                <input asp-for="Filename" type="file" name="filename" accept="image/gif, image/jpeg, image/png">
+                <input asp-for="Filename" type="file" name="filename" accept="image/gif, image/jpeg, image/png" style="width:100%;margin-top:5px;font-size:1rem;">
                 <span asp-validation-for="Filename" class="text-danger"></span>
             </div>
             @*<p class="text-center box-text-description align-self-center" style="width: 100%;font-size: 165%;margin-bottom: 0px;padding: 3px;padding-bottom: 0px;">@photo.Caption</p>*@
             <div class="form-group box-text-wrapper d-flex">
-                <input asp-for="Caption" class="form-control box-text-description align-self-center" style="width: 100%;font-size: 165%;margin-bottom: 0px;padding: 3px;padding-bottom: 0px;" placeholder="Caption" />
+                <input asp-for="Caption" class="form-control box-text-description align-self-center" style="width: 100%;font-size: 165%;margin-bottom: 0px;padding: 3px;padding-bottom: 0px; padding-left: 10px; border-radius:10px" placeholder="Caption" />
                 <span asp-validation-for="Caption" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" style="margin-bottom:-10px" />
             </div>
         </form>
     </div>

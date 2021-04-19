@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CO453_WebApps.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210417221518_AddComments")]
+    [Migration("20210419132929_AddComments")]
     partial class AddComments
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -25,7 +25,7 @@ namespace CO453_WebApps.Controllers
             return View(await _context.Messages.ToListAsync());
         }
 
-        // GET: MessagePosts/Details/5
+        // GET: PhotoPosts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,7 +34,10 @@ namespace CO453_WebApps.Controllers
             }
 
             var messagePost = await _context.Messages
+                .Include(c => c.Comments)
                 .FirstOrDefaultAsync(m => m.PostID == id);
+
+
             if (messagePost == null)
             {
                 return NotFound();
@@ -143,6 +146,62 @@ namespace CO453_WebApps.Controllers
             _context.Messages.Remove(messagePost);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public ActionResult Like(int id)
+        {
+            var messagePost = _context.Messages.Find(id);
+
+            if (messagePost == null)
+            {
+                return NotFound();
+            }
+            messagePost.Like();
+            try
+            {
+                _context.Update(messagePost);
+                _context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!MessagePostExists(messagePost.PostID))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction("Details", new { id = id });
+        }
+
+        public ActionResult Unlike(int id)
+        {
+            var messagePost = _context.Messages.Find(id);
+
+            if (messagePost == null)
+            {
+                return NotFound();
+            }
+            messagePost.Unlike();
+            try
+            {
+                _context.Update(messagePost);
+                _context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!MessagePostExists(messagePost.PostID))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction("Details", new { id = id });
         }
 
         private bool MessagePostExists(int id)

@@ -3,32 +3,35 @@
 @{
     ViewData["Title"] = "Create";
 }
-
-<h1>Create</h1>
-
-<h4>Comment</h4>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<link rel="stylesheet" href="~/css/Product%20Sans.css" />
+<link rel="stylesheet" href="~/css/App04_Styles.css" />
+<img src="~/App04Images/logo.svg" style=" display: block; margin-left: auto; margin-right: auto; width: 200px;margin-top: 20px;margin-bottom:20px;">
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="PostID" />
-            @*<div class="form-group">
-                    <label asp-for="PostID" class="control-label"></label>
-                    <select asp-for="PostID" class ="form-control" asp-items="ViewBag.PostID"></select>
-                </div>*@
-            <div class="form-group">
-                <label asp-for="Text" class="control-label"></label>
-                <textarea asp-for="Text" class="form-control"></textarea>
-                <span asp-validation-for="Text" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+<div class="d-flex justify-content-center" style="margin-bottom:20px">
+    <a class="btn btn-warning" style="width:80px; border-radius:10px" onclick="goBack()">
+        <img src="~/img/Buttons/back.svg">
+    </a>
 </div>
-
+<hr />
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <p class="text-center" style="color:#909090;font-size:1.2rem;font-family:'Product Sans'"><b>Add Comment</b></p>
+    <div style="margin-left:auto;margin-right:auto;">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="PostID" />
+                <div class="form-group">
+                    <textarea asp-for="Text" style=" font-family: 'Product Sans'; background-color: #007bff; color: white; border-radius: 20px; border-bottom-left-radius: 10px; max-width: 350px; margin-left: auto; margin-right: auto;" class="form-control"></textarea>
+                    <span asp-validation-for="Text" class="text-danger"></span>
+                </div>
+                <div class="form-group d-flex justify-content-center">
+                    <input type="submit" value="Add" class="btn btn-primary" />
+                </div>
+            </form>
+    </div>
 </div>

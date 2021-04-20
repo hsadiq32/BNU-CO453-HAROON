@@ -3,42 +3,42 @@
 @{
     ViewData["Title"] = "Index";
 }
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="~/css/Product%20Sans.css" />
 <link rel="stylesheet" href="~/css/App04_Styles.css" />
-<h1>Index</h1>
-
-<p>
-    <a asp-controller="PhotoPosts" asp-action="Create">New Photo Post</a>
-    <a asp-controller="MessagePosts" asp-action="Create">New Message Post</a>
-</p>
 <header>
-    <img class="text-center" src="~/App04Images/logo.png">
-    <form asp-action="Index" method="get">
-        <div class="form-actions no-color">
-            <p>
-                Find by name:
-                <input type="text" name="userName" />
-                <input type="submit" value="Search" class="btn btn-info" />
-                <a class="btn btn-secondary" asp-action="Index">Back to Full List</a>
-            </p>
+    <img src="~/App04Images/logo.svg" style=" display: block; margin-left: auto; margin-right: auto; width: 200px;margin-top: 20px;margin-bottom:20px;">
+    <hr />
+    <div class="d-flex justify-content-center" style="margin-bottom:20px">
+        <a class="btn" style="width:80px; border-radius:10px;background-color:#007bff;margin: 0px 5px 0px 5px;" asp-controller="PhotoPosts" asp-action="Create">
+            <img src="~/img/Buttons/add_photo_alternate_white_24dp.svg">
+        </a>
+        <a class="btn" style="width:80px; border-radius:10px;background-color:#007bff;margin: 0px 5px 0px 5px;" asp-controller="MessagePosts" asp-action="Create">
+            <img src="~/img/Buttons/post_add_white_24dp.svg">
+        </a>
+    </div>
+    <hr />
+    <div class="d-flex justify-content-center" style="margin-bottom:20px">
+        <div>
+            @Html.ActionLink("date_range", "Index", new { sortOrder = ViewBag.DateSortParm }, new { @class = "material-icons btn", @style = "color:white;height:37px;border-radius:10px;background-color:#245282;margin: 0px 5px 0px 5px;" })
         </div>
-    </form>
+        <div>
+            @Html.ActionLink("sort_by_alpha", "Index", new { sortOrder = ViewBag.NameSortParm }, new { @class = "material-icons btn", @style = "color:white;height:37px;border-radius:10px;background-color:#245282;margin: 0px 5px 0px 5px;" })
+        </div>
+        <form asp-action="Index" method="get">
+            <div class="form-actions no-color d-flex justify-content-center">
+                    <div>
+                        <input type="text" name="userName" placeholder="Name" style="font-family:'Product Sans';border-radius:10px;border-bottom-right-radius:0px;border-top-right-radius:0px;height:37px;border-color:#cecece;margin-left:5px;border-width:1px;padding-left:5px;" />
+                        <input type="submit" value="find_in_page" class="btn material-icons" style="border-radius: 10px; border-bottom-left-radius: 0px; border-top-left-radius: 0px; height: 37px; margin-top: -2px; margin-left: -5px; background-color: #245282; color: white;margin-right:5px"/>
+                    </div>
+                    <a class="btn material-icons" asp-action="Index" style = "color:white;height:37px;border-radius:10px;background-color:#245282;margin: 0px 5px 0px 5px;">autorenew</a>
+            </div>
+        </form>
+    </div>
 
 </header>
-<table class="table">
-    <tr>
-        <th>
-            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.NameSortParm })
-        </th>
-        <th>
-        </th>
-        <th>
-            @Html.ActionLink("Enrollment Date", "Index", new { sortOrder = ViewBag.DateSortParm })
-        </th>
-        <th></th>
-    </tr>
-</table>
 <div class="message-dashboard">
     <div class="row d-flex justify-content-around">
         @foreach (var item in Model)
@@ -55,64 +55,64 @@
             }
             string noneIMG = "not_found.png";
             <div class="message-box">
-            <div class="box-header-wrapper">
-                <p class="box-text-username">@Html.DisplayFor(modelItem => item.Username)</p>
-                <div class="d-flex justify-content-around box-wrapper-icons">
-                    <a asp-controller="@(item.DiscriminatorValue)s" asp-action="Edit" asp-route-id="@item.PostID">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-edit box-icon">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3"></path>
-                            <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3"></path>
-                            <line x1="16" y1="5" x2="19" y2="8"></line>
-                        </svg>
-                    </a>
-                    <a asp-controller="@(item.DiscriminatorValue)s" asp-action="Details" asp-route-id="@item.PostID">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-zoom-in box-icon">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <circle cx="10" cy="10" r="7"></circle>
-                            <line x1="7" y1="10" x2="13" y2="10"></line>
-                            <line x1="10" y1="7" x2="10" y2="13"></line>
-                            <line x1="21" y1="21" x2="15" y2="15"></line>
-                        </svg>
-                    </a>
-                    <a asp-controller="@(item.DiscriminatorValue)s" asp-action="Delete" asp-route-id="@item.PostID">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-trash box-icon">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <line x1="4" y1="7" x2="20" y2="7"></line>
-                            <line x1="10" y1="11" x2="10" y2="17"></line>
-                            <line x1="14" y1="11" x2="14" y2="17"></line>
-                            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
-                            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
-                        </svg>
-                    </a>
+                <div class="box-header-wrapper">
+                    <p class="box-text-username">@Html.DisplayFor(modelItem => item.Username)</p>
+                    <div class="d-flex justify-content-around box-wrapper-icons">
+                        <a asp-controller="@(item.DiscriminatorValue)s" asp-action="Edit" asp-route-id="@item.PostID">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-edit box-icon">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3"></path>
+                                <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3"></path>
+                                <line x1="16" y1="5" x2="19" y2="8"></line>
+                            </svg>
+                        </a>
+                        <a asp-controller="@(item.DiscriminatorValue)s" asp-action="Details" asp-route-id="@item.PostID">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-zoom-in box-icon">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <circle cx="10" cy="10" r="7"></circle>
+                                <line x1="7" y1="10" x2="13" y2="10"></line>
+                                <line x1="10" y1="7" x2="10" y2="13"></line>
+                                <line x1="21" y1="21" x2="15" y2="15"></line>
+                            </svg>
+                        </a>
+                        <a asp-controller="@(item.DiscriminatorValue)s" asp-action="Delete" asp-route-id="@item.PostID">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-trash box-icon">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <line x1="4" y1="7" x2="20" y2="7"></line>
+                                <line x1="10" y1="11" x2="10" y2="17"></line>
+                                <line x1="14" y1="11" x2="14" y2="17"></line>
+                                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
+                @if (item.DiscriminatorValue.Equals("PhotoPost"))
+                {
+                    <div class="PhotoPost-img"><img class="box-img-thumbnail" src="~/App04Images/@if (photo != null) {@photo.Filename} else { @noneIMG } " onerror="this.style.display = 'none';" alt=""></div>
+                    @if (photo != null)
+                    {
+                        <div class="box-text-wrapper d-flex">
+                            <p class="text-center box-text-description align-self-center" style="width: 100%;font-size: 165%;margin-bottom: 0px;padding: 3px;padding-bottom: 0px;">@photo.Caption</p>
+                        </div>
+                    }
+                }
+                @if (item.DiscriminatorValue.Equals("MessagePost"))
+                {
+                    <div>
+                        <img class="MessagePost-txt" src="~/img/App04/quote.svg" style="float:left;" />
+                    </div>
+                    @if (message != null)
+                    {
+                        <div class="box-text-wrapper d-flex h-100" style="height:100%">
+                            <p class="text-center box-text-description align-self-center" style="width: 100%;font-size: 165%;margin-bottom: 0px;padding: 3px;padding-bottom: 0px;">@message.Message</p>
+                        </div>
+                    }
+                    <div>
+                        <img class="MessagePost-txt" src="~/img/App04/quote.svg" style="-webkit-transform: rotate(180deg); float:right;" />
+                    </div>
+                }
             </div>
-            @if (item.DiscriminatorValue.Equals("PhotoPost"))
-            {
-                <div class="PhotoPost-img"><img class="box-img-thumbnail" src="~/App04Images/@if (photo != null) {@photo.Filename} else { @noneIMG } " onerror="this.style.display = 'none';" alt=""></div>
-                @if (photo != null)
-                {
-                    <div class="box-text-wrapper d-flex">
-                        <p class="text-center box-text-description align-self-center" style="width: 100%;font-size: 165%;margin-bottom: 0px;padding: 3px;padding-bottom: 0px;">@photo.Caption</p>
-                    </div>
-                }
-            }
-            @if (item.DiscriminatorValue.Equals("MessagePost"))
-            {
-                <div>
-                    <img class="MessagePost-txt" src="~/img/App04/quote.svg" style="float:left;" />
-                </div>
-                @if (message != null)
-                {
-                    <div class="box-text-wrapper d-flex h-100" style="height:100%">
-                        <p class="text-center box-text-description align-self-center" style="width: 100%;font-size: 165%;margin-bottom: 0px;padding: 3px;padding-bottom: 0px;">@message.Message</p>
-                    </div>
-                }
-                <div>
-                    <img class="MessagePost-txt" src="~/img/App04/quote.svg" style="-webkit-transform: rotate(180deg); float:right;" />
-                </div>
-            }
-        </div>
         }
     </div>
 </div>
